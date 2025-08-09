@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import {MapPin} from 'lucide-react'
 import {FaCaretDown} from 'react-icons/fa'
 
@@ -18,8 +18,15 @@ const Navbar = () => {
              <FaCaretDown/>
              </div>
           </div>
-          {/* manue sating */}
-          
+          {/* manue section */}
+         <nav>
+          <ul className='flex gap-7 items-center text-xl font-semibold'>
+            <NavLink to={'/'}><li>Home</li></NavLink>
+            <NavLink><li>Products</li></NavLink>
+            <NavLink><li>About</li></NavLink>
+            <NavLink><li>Contect</li></NavLink>
+          </ul>
+         </nav>
        </div>
 
     </div>
