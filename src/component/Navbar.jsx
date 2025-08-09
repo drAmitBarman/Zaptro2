@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import {MapPin} from 'lucide-react'
 import {FaCaretDown} from 'react-icons/fa'
+import { IoCartOutline } from "react-icons/io5";
 
 const Navbar = () => {
   const location=false
@@ -21,11 +22,15 @@ const Navbar = () => {
           {/* manue section */}
          <nav>
           <ul className='flex gap-7 items-center text-xl font-semibold'>
-            <NavLink to={'/'}><li>Home</li></NavLink>
-            <NavLink><li>Products</li></NavLink>
-            <NavLink><li>About</li></NavLink>
-            <NavLink><li>Contect</li></NavLink>
+            <NavLink to={'/'} className={({isActive})=> `${isActive ? "border-b-3 transition-all border-red-500" :"text-black"} cursor-pointer`}><li>Home</li></NavLink>
+            <NavLink to={'/products'} className={({isActive})=>`${isActive ? "border-b-3 transition-all border-red-500" :"text-black"} cursor-pointer`}><li>Products</li></NavLink>
+            <NavLink to={'/about'} className={({isActive})=> `${isActive ? "border-b-3 transition-all border-red-500" :"text-black"} cursor-pointer`}><li>About</li></NavLink>
+            <NavLink to={'/contact'} className={({isActive})=> `${isActive ? "border-b-3 transition-all border-red-500" :"text-black"} cursor-pointer`}><li>Contact</li></NavLink>
           </ul>
+          <Link to={'/cart'}>
+          <IoCartOutline className='h-7 w-7'/>
+          <span className='bg-red-500 px-2 rounded-full absolute -top-3 -right-3 text-white'>0</span>
+          </Link>
          </nav>
        </div>
 
