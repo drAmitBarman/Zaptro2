@@ -20,6 +20,7 @@ const App = () => {
         console.log(location)
        } catch (error) {
         console.log(error)
+        
        }
     })
   }
