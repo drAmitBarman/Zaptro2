@@ -1,12 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import {MapPin} from 'lucide-react'
 import {FaCaretDown} from 'react-icons/fa'
 import { IoCartOutline } from "react-icons/io5";
 import {SignedOut,SignInButton,SignedIn,UserButton} from "@clerk/clerk-react"
+import { CgClose } from "react-icons/cg";
 
-const Navbar = () => {
-  const location=false
+const Navbar = ({location}) => {
+  
+  const [opendropdown,setOpendropdown]=useState(false)
+  const toggledropdown = ()=>{
+    setOpendropdown(!opendropdown)
+  }
+
   return (
     <div className='bg-white py-3 shadow-2xl'>
       <div className='max-w-6xl mx-auto flex justify-between items-center'>
@@ -15,10 +21,18 @@ const Navbar = () => {
           <Link to={'/'}><h1 className='font-bold text-2xl'><span className='text-red-500 font-serif'>Z</span>aptro</h1></Link>
           <div className='flex gap-1 cursor-pointer text-gray-700 items-center'>
              <MapPin className='text-red-500'/>
-             <span className='font-semibold' >{location ? <div></div>:"Add Adress"}</span>
+             <span className='font-semibold' >{location ? <div className='-space-y-2'>
+                 <p>{location.county}</p>
+                 <p>{location.country}</p>
+             </div>:"Add Adress"}</span>
 
-             <FaCaretDown/>
+             <FaCaretDown onClick={toggledropdown}/>
              </div>
+             {
+              opendropdown ? <div className='w-[250px] h-max shadow-2xl z-50 bg-white fixed top-16 left-60 border-2 p-5 border-gray-100 rounded-md'>
+                <h1 className='font-semibold mb-4 text-xl flex justify-between'>Change Location <span><CgClose onClick={toggledropdown}/></span></h1>
+              </div> : null
+             }
           </div>
           {/* manue section */}
          <nav className='flex gap-7 items-center'>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BrowserRouter,Route,Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import Products from './pages/Products'
@@ -9,6 +9,8 @@ import Navbar from './component/Navbar'
 import axios from 'axios'
 
 const App = () => {
+  const [location,setLocation]=useState()
+
   const getLocation =async ()=>{
     navigator.geolocation.getCurrentPosition( async pos => {
       const{latitude, longitude} =pos.coords
@@ -17,7 +19,10 @@ const App = () => {
        const url= `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
        try {
         const location = await axios.get(url)
-        console.log(location)
+ 
+        const exactlocation=location.data.address
+        setLocation(exactlocation)
+        console.log(exactlocation)
        } catch (error) {
         console.log(error)
         
@@ -29,7 +34,7 @@ const App = () => {
   },[])
   return (
     <BrowserRouter>
-    <Navbar/>
+    <Navbar location={location}/>
     <Routes>
       <Route path='/' element={<Home/>}></Route>
       <Route path='/products' element={<Products/>}></Route>
