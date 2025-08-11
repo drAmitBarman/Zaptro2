@@ -24,7 +24,7 @@ const App = () => {
         const exactlocation=location.data.address
         setLocation(exactlocation)
         setOpendropdown(false)
-        console.log(exactlocation)
+        // console.log(exactlocation)
        } catch (error) {
         console.log(error)
         
