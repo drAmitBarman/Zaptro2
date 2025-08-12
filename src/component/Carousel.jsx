@@ -3,6 +3,8 @@ import { DataContext, DataProvider } from '../contex/DataContex'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick'
+import { AiOutlineArrowLeft } from "react-icons/ai";
+import { AiOutlineArrowRight } from "react-icons/ai";
 
 const Carousel = () => {
     const {data,fetchAllProducts}= useContext(DataContext)
@@ -10,7 +12,24 @@ const Carousel = () => {
      useEffect(()=>{
        fetchAllProducts();
      },[])
-     const Sample
+     const SamplePrevArrow =(props) =>{
+        const {className,style, onClick} =props;
+        return(
+            <div onClick={onClick} className={`arrow ${className}`} style={{zIndex:3}}>
+                <AiOutlineArrowLeft className='arrows'style={{...style, display: "block" ,borderRadius:"50px",background:"#f53347" , color:"white",position:"absolute", padding:"2px" ,left:"50px"}} onMouseOver="this.style.backgroundColor='#555"/>
+            </div>
+        )
+     }
+
+     const SampleNextArrow =(props) =>{
+        const {className,style, onClick} =props;
+        return(
+            <div onClick={onClick} className={`arrow ${className}`}>
+                <AiOutlineArrowRight className='arrows'style={{...style, display: "block" ,borderRadius:"50px",background:"#f53347" , color:"white",position:"absolute", padding:"2px" ,right:"50px"}} />
+            </div>
+        )
+     }
+
      var settings = {
     dots: false,
     autoplay: true,
