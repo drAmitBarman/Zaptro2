@@ -10,7 +10,7 @@ const [data,setData]=useState()
 
         try {
             const res =await axios.get('https://fakestoreapi.in/api/products?limit=150')
-            console.log(res)
+            // console.log(res)
             const productsdata=res.data.products
             setData(productsdata)
         } catch (error) {
@@ -23,4 +23,4 @@ return <DataContext.Provider value={{data,setData,fetchAllProducts}}>
      </DataContext.Provider>
 
 }
-export  const getData= ()=> useContext()
+export  const getData= ()=> useContext(DataContext)

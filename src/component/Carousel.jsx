@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick'
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import Catagory from './Catagory';
 
 const Carousel = () => {
     const {data,fetchAllProducts}= getData()
@@ -66,6 +67,7 @@ const Carousel = () => {
     
       
     </Slider>
+    <Catagory/>
     
     </div>
   )
