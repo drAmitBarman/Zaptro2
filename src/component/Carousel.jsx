@@ -1,5 +1,5 @@
-import React, { useContext, useEffect } from 'react'
-import { DataContext, DataProvider } from '../contex/DataContex'
+import React, { useEffect } from 'react'
+import { DataProvider, getData } from '../contex/DataContex'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick'
@@ -7,7 +7,7 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
 const Carousel = () => {
-    const {data,fetchAllProducts}= useContext(DataContext)
+    const {data,fetchAllProducts}= getData()
      console.log(data)
      useEffect(()=>{
        fetchAllProducts();
@@ -38,6 +38,7 @@ const Carousel = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    pauseOnHover:false,
     nextArrow:<SampleNextArrow to="next"/>,
     prevArrow:<SamplePrevArrow to="prev"/>,
   };
